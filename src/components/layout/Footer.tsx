@@ -45,7 +45,7 @@ const Footer = () => {
                             </div> */}
                             <div className="flex items-center gap-2">
                                 <MapPin size={14} className="text-primary" />
-                                <span>© StrongBody SG PTE., LTD., 2022. Singapore</span>
+                                <span>StrongBody SG PTE. LTD., Singapore</span>
                             </div>
                         </div>
 
@@ -105,7 +105,7 @@ const Footer = () => {
 
                 <div className="pt-8 border-t border-grey-200 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-grey-500 text-xs font-medium text-center md:text-left">
-                        © 2026 StrongBody AI – Zasilane przez MultiMe AI – Globalna platforma z Singapuru. Wszelkie prawa zastrzeżone.
+                        © 2022 StrongBody AI – Zasilane przez MultiMe AI – Globalna platforma z Singapuru. Wszelkie prawa zastrzeżone.
                     </p>
                     <p className="text-grey-600 text-[10px] font-medium max-w-md text-center md:text-right">
                         StrongBody AI to technologiczna platforma handlowa. Nie świadczymy bezpośrednio usług medycznych. Wszystkie usługi są świadczone przez niezależnych, zweryfikowanych partnerów.
