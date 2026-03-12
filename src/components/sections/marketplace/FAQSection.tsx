@@ -1,21 +1,49 @@
 import React from "react";
 import { FAQAccordion } from "./FAQAccordion";
-import { Reveal, FadeIn } from "@/components/animations/Reveal";
-import { fetchWidgetItems } from "@/app/api/widget";
+
+interface FAQItem {
+    q: string;
+    a: string;
+}
 
 const FAQSection = async () => {
-    const clientsWidget = await fetchWidgetItems("faq-clients");
-    const partnersWidget = await fetchWidgetItems("faq-partners");
+    const clientFAQs: FAQItem[] = [
+        {
+            q: "Czy StrongBody AI to szpital?",
+            a: "Nie. StrongBody AI to platforma technologiczna typu marketplace, która łączy klientów z niezależnie zweryfikowanymi specjalistami ds. zdrowia. Zapewniamy infrastrukturę – nie świadczymy usług medycznych."
+        },
+        {
+            q: "Jak płacić za usługi?",
+            a: "Za pośrednictwem naszego bezpiecznego systemu escrow. Środki są bezpiecznie przechowywane i zwalniane dla specjalisty dopiero po potwierdzeniu wykonania usługi."
+        },
+        {
+            q: "Czy mogę wybrać specjalistę z innego kraju?",
+            a: "Tak. StrongBody AI umożliwia globalne połączenia. Możesz przeglądać i konsultować się ze specjalistami z całego świata dzięki tłumaczowi AI w czasie rzeczywistym."
+        },
+        {
+            q: "Co jeśli dojdzie do sporu?",
+            a: "Nasz przejrzysty system rozstrzygania sporów wspiera obie strony. Środki w systemie escrow są zamrożone do czasu sprawiedliwego rozwiązania sprawy."
+        }
+    ];
 
-    const clientFAQs = (clientsWidget?.items || []).map((item: any) => ({
-        q: item.title,
-        a: item.excerpt || item.content || ""
-    }));
-
-    const partnerFAQs = (partnersWidget?.items || []).map((item: any) => ({
-        q: item.title,
-        a: item.excerpt || item.content || ""
-    }));
+    const partnerFAQs: FAQItem[] = [
+        {
+            q: "Jakie są wymagania, aby dołączyć?",
+            a: "Musisz posiadać ważną licencję zawodową, przejść nasz proces weryfikacji poświadczeń i zgodzić się na standardy etyczne naszej platformy w drodze selektywnego przeglądu."
+        },
+        {
+            q: "Jakie są opłaty platformowe?",
+            a: "Opłaty platformowe są konkurencyjne i dotyczą wyłącznie zrealizowanych transakcji. Nie ma żadnych opłat wstępnych ani ukrytych kosztów."
+        },
+        {
+            q: "Czy StrongBody AI weryfikuje poświadczenia?",
+            a: "Tak. Każdy partner przechodzi rygorystyczną weryfikację uprawnień i licencji w ramach naszego procesu selektywnej rekrutacji."
+        },
+        {
+            q: "Czy mam pełną kontrolę nad swoimi cenami?",
+            a: "Absolutnie. Sam ustalasz opłaty za swoje usługi i konfigurujesz własne Oferty. Pełna autonomia w zakresie wyceny i świadczenia usług."
+        }
+    ];
 
     return (
         <section className="py-24 bg-white border-t border-grey-100">
@@ -51,3 +79,5 @@ const FAQSection = async () => {
 };
 
 export default FAQSection;
+
+

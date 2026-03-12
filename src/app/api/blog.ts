@@ -80,6 +80,6 @@ export async function fetchBlogsByCategory(category: string = "blogs", page: num
     }
 }
 
-export async function fetchAllBlogPosts(page: number = 1, limit: number = 6) {
+export async function fetchAllBlogPosts(page: number = 1, limit: number = 50000) {
     return fetchBlogsByCategory("blogs", page, limit);
 }

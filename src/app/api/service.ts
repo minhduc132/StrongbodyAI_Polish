@@ -42,7 +42,7 @@ export async function fetchServicesByCategory(category: string = "services", pag
     }
 }
 
-export async function fetchAllServices(page: number = 1, limit: number = 6) {
+export async function fetchAllServices(page: number = 1, limit: number = 50000) {
     return fetchServicesByCategory("services", page, limit);
 }
 
