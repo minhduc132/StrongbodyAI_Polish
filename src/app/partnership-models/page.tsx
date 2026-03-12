@@ -1,5 +1,4 @@
 import PageHeader from "@/components/layout/PageHeader";
-import ServiceCards from "@/components/sections/marketplace/ServiceCards";
 import { ArrowRight, Building2, UserPlus, Zap } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -37,8 +36,6 @@ export default function PartnershipModelsPage() {
                 description="Elastyczne struktury współpracy zaprojektowane tak, aby pasowały do celów i skali Twojej organizacji."
                 breadcrumb="Partnerstwo"
             />
-
-            <ServiceCards />
 
             {/* Path to Partnership */}
             <section className="py-24 text-white rounded-[4rem] mx-4 my-12 overflow-hidden relative" style={{ background: 'var(--brand-gradient)' }}>

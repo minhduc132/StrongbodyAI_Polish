@@ -1,6 +1,5 @@
 import PageHeader from "@/components/layout/PageHeader";
 import UseCases from "@/components/sections/marketplace/UseCases";
-import ServiceCards from "@/components/sections/marketplace/ServiceCards";
 import { Quote } from "lucide-react";
 import { Metadata } from "next";
 
@@ -60,14 +59,6 @@ export default function UseCasesPage() {
                 </div>
             </section>
 
-            <div className="bg-slate-50 py-12">
-                <div className="max-w-7xl mx-auto px-4">
-                    <div className="text-center mb-0 mt-12">
-                        <h2 className="text-3xl font-bold text-slate-900">Powiązane modele</h2>
-                    </div>
-                </div>
-                <ServiceCards />
-            </div>
         </main>
     );
 }

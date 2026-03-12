@@ -36,7 +36,6 @@ const Navbar = () => {
             name: "Platforma",
             links: [
                 { name: "Jak to działa", href: "/how-it-works", icon: Info, desc: "Proces i kroki" },
-                { name: "Usługi", href: "/services", icon: LayoutGrid, desc: "Przeglądaj kategorie" },
                 { name: "Aplikacja MultiMe AI", href: "/multime", icon: Globe, desc: "Pobierz aplikację" },
             ]
         },

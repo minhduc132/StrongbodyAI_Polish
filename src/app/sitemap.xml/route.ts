@@ -15,8 +15,7 @@ export async function GET(request: Request) {
     ...Array.from({ length: postSitemapCount }, (_, i) => ({
       loc: `${baseUrl}/sitemap/post-sitemap-${i + 1}.xml`,
       lastmod: lastMod
-    })),
-    { loc: `${baseUrl}/sitemap/service-sitemap.xml`, lastmod: lastMod },
+    }))
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

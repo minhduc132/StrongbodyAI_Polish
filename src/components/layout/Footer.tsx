@@ -7,7 +7,6 @@ const platformLinks = [
     { name: "Strona główna", href: "/" },
     { name: "O nas", href: "/about" },
     { name: "Jak to działa", href: "/how-it-works" },
-    { name: "Usługi", href: "/services" },
 ];
 
 const userLinks = [
