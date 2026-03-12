@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Calendar, Clock, Loader2 } from "lucide-react";
+import { ArrowRight, Calendar, Clock, Loader2, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
 import Container from "@/components/layout/Container";
 import { fetchAllBlogPosts } from "@/app/api/blog";
 
@@ -23,99 +23,133 @@ interface BlogListClientProps {
 }
 
 export default function BlogListClient({ initialPosts }: BlogListClientProps) {
-    const [posts, setPosts] = React.useState<BlogPost[]>(initialPosts);
-    const [page, setPage] = React.useState(1);
+    const INITIAL_SHOW = 6;
+    const ITEMS_PER_PAGE = 12;
+
+    // Phase 1: Show first 6 + "Load More" button
+    // Phase 2: Show all posts with pagination
+    const [expanded, setExpanded] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
-    const [hasMore, setHasMore] = React.useState(initialPosts.length === 6);
+    const [currentPage, setCurrentPage] = React.useState(1);
 
-    const handleLoadMore = async () => {
-        if (loading || !hasMore) return;
+    // In phase 1, show only first 6. In phase 2, paginate all posts.
+    const totalPages = Math.ceil(initialPosts.length / ITEMS_PER_PAGE);
+    const hasMoreThanOnePage = initialPosts.length > INITIAL_SHOW;
 
-        setLoading(true);
-        const nextPage = page + 1;
-
-        try {
-            const newPosts = await fetchAllBlogPosts(nextPage, 6);
-            if (newPosts.length > 0) {
-                setPosts(prev => [...prev, ...newPosts]);
-                setPage(nextPage);
-                if (newPosts.length < 6) {
-                    setHasMore(false);
-                }
-            } else {
-                setHasMore(false);
-            }
-        } catch (error) {
-            console.error("Error loading more posts:", error);
-        } finally {
-            setLoading(false);
+    const displayedPosts = React.useMemo(() => {
+        if (!expanded) {
+            // Phase 1: show first 6 posts only
+            return initialPosts.slice(0, INITIAL_SHOW);
         }
+        // Phase 2: paginate
+        const start = (currentPage - 1) * ITEMS_PER_PAGE;
+        return initialPosts.slice(start, start + ITEMS_PER_PAGE);
+    }, [initialPosts, expanded, currentPage]);
+
+    const handleLoadMore = () => {
+        setLoading(true);
+        setTimeout(() => {
+            setExpanded(true);
+            setCurrentPage(1);
+            setLoading(false);
+        }, 600);
     };
+
+    const handlePageChange = (page: number) => {
+        if (page < 1 || page > totalPages || page === currentPage) return;
+        window.scrollTo({ top: 400, behavior: 'smooth' });
+        setCurrentPage(page);
+    };
+
+    // Generate page numbers with ellipses
+    const getPageNumbers = () => {
+        const pages: (number | string)[] = [];
+        const delta = 1;
+
+        for (let i = 1; i <= totalPages; i++) {
+            if (
+                i === 1 ||
+                i === totalPages ||
+                (i >= currentPage - delta && i <= currentPage + delta)
+            ) {
+                pages.push(i);
+            } else if (
+                i === currentPage - delta - 1 ||
+                i === currentPage + delta + 1
+            ) {
+                pages.push('...');
+            }
+        }
+        return pages;
+    };
+
+    // ---- Render blog card ----
+    const renderBlogCard = (post: BlogPost) => (
+        <Link
+            key={post.id}
+            href={`/${post.slug}`}
+            className="group bg-white rounded-2xl border border-grey-200 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+        >
+            <div className="relative h-48 overflow-hidden">
+                {post.image ? (
+                    <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                ) : (
+                    <div className="w-full h-full bg-grey-50 flex items-center justify-center opacity-20">
+                        <Calendar className="text-grey-400" size={64} />
+                    </div>
+                )}
+                <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                    {post.category}
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-grey-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+            <div className="p-6 flex-1 flex flex-col">
+                <div className="flex items-center gap-4 text-xs text-grey-500 font-medium mb-3">
+                    <div className="flex items-center gap-1">
+                        <Calendar size={12} className="text-primary/70" />
+                        {(() => {
+                            try {
+                                if (!post.date) return "Porada zdrowotna";
+                                const d = new Date(post.date);
+                                if (isNaN(d.getTime())) return "Porada zdrowotna";
+                                return d.toLocaleDateString('pl-PL', { month: 'short', day: 'numeric', year: 'numeric' });
+                            } catch (e) {
+                                return "Porada zdrowotna";
+                            }
+                        })()}
+                    </div>
+                    <div className="flex items-center gap-1">
+                        <Clock size={12} className="text-primary/70" />
+                        {post.readTime}
+                    </div>
+                </div>
+                <h3 className="text-xl font-bold text-grey-900 mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                    {post.title}
+                </h3>
+                <p className="text-sm text-grey-600 font-medium leading-relaxed mb-4 line-clamp-3 flex-1">
+                    {post.excerpt}
+                </p>
+                <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-grey-500">{post.author}</span>
+                    <div className="flex items-center gap-2 text-primary font-bold text-sm group-hover:gap-3 transition-all">
+                        Czytaj więcej <ArrowRight size={14} />
+                    </div>
+                </div>
+            </div>
+        </Link>
+    );
 
     return (
         <section className="py-24 bg-white min-h-[600px]">
             <Container>
                 {/* Blog Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                    {posts.length > 0 ? (
-                        posts.map((post: BlogPost) => (
-                            <Link
-                                key={post.id}
-                                href={`/${post.slug}`}
-                                className="group bg-white rounded-2xl border border-grey-100 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full"
-                            >
-                                <div className="relative h-48 overflow-hidden">
-                                    {post.image ? (
-                                        <img
-                                            src={post.image}
-                                            alt={post.title}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        />
-                                    ) : (
-                                        <div className="w-full h-full bg-grey-50 flex items-center justify-center opacity-20">
-                                            <Calendar className="text-grey-400" size={64} />
-                                        </div>
-                                    )}
-                                    <div className="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                                        {post.category}
-                                    </div>
-                                    <div className="absolute inset-0 bg-gradient-to-t from-grey-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                </div>
-                                <div className="p-6 flex-1 flex flex-col">
-                                    <div className="flex items-center gap-4 text-xs text-grey-500 font-medium mb-3">
-                                        <div className="flex items-center gap-1">
-                                            <Calendar size={12} className="text-primary/70" />
-                                            {(() => {
-                                                try {
-                                                    if (!post.date) return "Porada zdrowotna";
-                                                    const d = new Date(post.date);
-                                                    if (isNaN(d.getTime())) return "Porada zdrowotna";
-                                                    return d.toLocaleDateString('pl-PL', { month: 'short', day: 'numeric', year: 'numeric' });
-                                                } catch (e) {
-                                                    return "Porada zdrowotna";
-                                                }
-                                            })()}
-                                        </div>
-                                        <div className="flex items-center gap-1">
-                                            <Clock size={12} className="text-primary/70" />
-                                            {post.readTime}
-                                        </div>
-                                    </div>
-                                    <h3 className="text-xl font-bold text-grey-900 mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                                        {post.title}
-                                    </h3>
-                                    <p className="text-sm text-grey-600 font-medium leading-relaxed mb-4 line-clamp-3 flex-1">
-                                        {post.excerpt}
-                                    </p>
-                                    <div className="flex items-center justify-between">
-                                        <span className="text-xs font-bold text-grey-500">{post.author}</span>
-                                        <div className="flex items-center gap-2 text-primary font-bold text-sm group-hover:gap-3 transition-all">
-                                            Czytaj więcej <ArrowRight size={14} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))
+                    {displayedPosts.length > 0 ? (
+                        displayedPosts.map((post: BlogPost) => renderBlogCard(post))
                     ) : (
                         <div className="col-span-full text-center py-12">
                             <div className="inline-flex w-16 h-16 rounded-full bg-grey-100 items-center justify-center text-grey-400 mb-4">
@@ -127,8 +161,8 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
                     )}
                 </div>
 
-                {/* Load More Button */}
-                {hasMore && (
+                {/* Phase 1: "Load More" button (before expanding) */}
+                {!expanded && hasMoreThanOnePage && (
                     <div className="flex justify-center mt-12">
                         <button
                             onClick={handleLoadMore}
@@ -149,8 +183,68 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
                         </button>
                     </div>
                 )}
+
+                {/* Phase 2: Pagination (after expanding) */}
+                {expanded && totalPages > 1 && (
+                    <div className="flex justify-center items-center gap-2 mt-12">
+                        {/* First Page */}
+                        <button
+                            onClick={() => handlePageChange(1)}
+                            disabled={currentPage === 1}
+                            className="p-2 rounded-lg border border-grey-200 text-grey-400 hover:bg-grey-50 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                        >
+                            <ChevronsLeft size={20} />
+                        </button>
+
+                        {/* Previous Page */}
+                        <button
+                            onClick={() => handlePageChange(currentPage - 1)}
+                            disabled={currentPage === 1}
+                            className="p-2 rounded-lg border border-grey-200 text-grey-400 hover:bg-grey-50 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                        >
+                            <ChevronLeft size={20} />
+                        </button>
+
+                        {/* Page Numbers */}
+                        <div className="flex items-center gap-2 mx-2">
+                            {getPageNumbers().map((page, index) => (
+                                page === '...' ? (
+                                    <span key={`dots-${index}`} className="text-grey-400 px-2">...</span>
+                                ) : (
+                                    <button
+                                        key={`page-${page}`}
+                                        onClick={() => handlePageChange(Number(page))}
+                                        className={`w-10 h-10 rounded-lg font-bold transition-all ${currentPage === page
+                                            ? 'bg-primary text-white shadow-lg'
+                                            : 'text-grey-600 hover:bg-grey-50 border border-grey-200'
+                                            }`}
+                                    >
+                                        {page}
+                                    </button>
+                                )
+                            ))}
+                        </div>
+
+                        {/* Next Page */}
+                        <button
+                            onClick={() => handlePageChange(currentPage + 1)}
+                            disabled={currentPage === totalPages}
+                            className="p-2 rounded-lg border border-grey-200 text-grey-400 hover:bg-grey-50 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                        >
+                            <ChevronRight size={20} />
+                        </button>
+
+                        {/* Last Page */}
+                        <button
+                            onClick={() => handlePageChange(totalPages)}
+                            disabled={currentPage === totalPages}
+                            className="p-2 rounded-lg border border-grey-200 text-grey-400 hover:bg-grey-50 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                        >
+                            <ChevronsRight size={20} />
+                        </button>
+                    </div>
+                )}
             </Container>
         </section>
     );
 }
-

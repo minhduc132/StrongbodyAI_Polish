@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function BlogPage() {
     // Initial data for "All" tab: Combined list of all blog posts
     // Initial data: Fetch according to the specific category requested
-    const initialPosts = await fetchBlogsByCategory("blogs");
+    const initialPosts = await fetchBlogsByCategory("blogs", 1, 1000);
 
     return (
         <main className="min-h-screen">
