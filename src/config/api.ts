@@ -1,18 +1,18 @@
-export const API_BASE_URL = "https://aemskbem9q.ap-southeast-1.awsapprunner.com/v1/public";
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const API_CONFIG = {
     HEADERS: {
-        "X-Site-Code": "strongbodyus",
-        "X-Tenant-Code": "strongbody",
-        "language": "en",
-        "x-api-key": "wk_live_ec40edad_1eae3370d55b5f9754d19965821d0ecf"
+        "X-Site-Code": process.env.NEXT_PUBLIC_SITE_CODE,
+        "X-Tenant-Code": process.env.NEXT_PUBLIC_TENANT_CODE,
+        "language": process.env.NEXT_PUBLIC_LANGUAGE,
+        "x-api-key": process.env.NEXT_PUBLIC_API_KEY
     }
 };
 
 export const MAIL_CONFIG = {
-    SMTP_USER: "no-reply@strongbody.ai",
-    SMTP_PASS: "vuiw noyt csvo dnjb",
-    ADMIN_EMAIL: "customercare@strongbody.ai"
+    SMTP_USER: process.env.SMTP_USER,
+    SMTP_PASS: process.env.SMTP_PASS,
+    ADMIN_EMAIL: process.env.ADMIN_EMAIL
 };
 
 export async function apiFetch(endpoint: string, options: RequestInit = {}) {
