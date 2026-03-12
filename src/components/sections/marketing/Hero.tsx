@@ -83,7 +83,7 @@ const Hero = () => {
                                     href="/services"
                                     className="bg-secondary text-white px-8 py-4 rounded-2xl text-[15px] font-bold transition-all shadow-lg shadow-secondary/20 hover:shadow-secondary/35 hover:-translate-y-0.5 flex items-center justify-center gap-2"
                                 >
-                                    Przeglądaj Usługi Medyczne
+                                    Wsparcie Zdrowotne
                                 </Link>
                             </div>
 
