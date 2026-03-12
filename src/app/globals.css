@@ -1,0 +1,157 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+    --background: #ffffff;
+    --foreground: #111827;
+
+    /* Main Colors */
+    --primary: #DA1F27;
+    --primary-light: #FDF1F1;
+    --secondary: #1F2C43;
+    --secondary-light: #F0F4F8;
+
+    /* Text Colors */
+    --text-p: #111827;
+    --text-m: #687588;
+    --text-s: #C6C6C6;
+
+    /* Greyscale */
+    --grey-50: #FAFAFA;
+    --grey-100: #F5F6F8;
+    --grey-200: #EBEDF0;
+    --grey-300: #E2E4E8;
+    --grey-400: #CBD5E0;
+    --grey-500: #A0AEC0;
+    --grey-600: #687588;
+    --grey-700: #323B49;
+    --grey-800: #1F2937;
+    --grey-900: #111827;
+
+    /* Gradients */
+    --primary-gradient: linear-gradient(135deg, #DA1F27 0%, #B91C1C 100%);
+    --secondary-gradient: linear-gradient(135deg, #1F2C43 0%, #111A2E 100%);
+    --brand-gradient: linear-gradient(135deg, #1F2C43 0%, #111827 100%);
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-primary: var(--primary);
+    --color-primary-light: var(--primary-light);
+    --color-secondary: var(--secondary);
+
+    --color-text-p: var(--text-p);
+    --color-text-m: var(--text-m);
+    --color-text-s: var(--text-s);
+
+    --color-grey-50: var(--grey-50);
+    --color-grey-100: var(--grey-100);
+    --color-grey-200: var(--grey-200);
+    --color-grey-300: var(--grey-300);
+    --color-grey-400: var(--grey-400);
+    --color-grey-500: var(--grey-500);
+    --color-grey-600: var(--grey-600);
+    --color-grey-700: var(--grey-700);
+    --color-grey-800: var(--grey-800);
+    --color-grey-900: var(--grey-900);
+
+    --color-primary-gradient: var(--primary-gradient);
+    --color-secondary-gradient: var(--secondary-gradient);
+
+    --font-heading: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+    --font-sans: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+    * {
+        @apply border-grey-300;
+        font-family: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+    }
+
+    body {
+        @apply bg-white text-text-m antialiased;
+        line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply tracking-tight font-bold text-text-p;
+        line-height: 1.15;
+    }
+
+    h1 {
+        font-size: 64px;
+    }
+
+    h2 {
+        font-size: 48px;
+    }
+
+    h3 {
+        font-size: 40px;
+    }
+
+    h4 {
+        font-size: 32px;
+    }
+
+    h5 {
+        font-size: 24px;
+    }
+
+    h6 {
+        font-size: 20px;
+    }
+
+    p {
+        @apply text-text-m;
+        font-size: 16px;
+    }
+}
+
+@layer utilities {
+    .glass {
+        @apply bg-white/70 backdrop-blur-md border border-white/20;
+    }
+
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+
+
+@layer utilities {
+    .glass {
+        @apply bg-white/70 backdrop-blur-md border border-white/20;
+    }
+}
+
+@keyframes bounce-slow {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes bounce-slower {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
