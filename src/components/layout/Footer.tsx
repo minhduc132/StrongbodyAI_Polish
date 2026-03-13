@@ -26,7 +26,7 @@ const legalLinks = [
 const Footer = ({ settings }: { settings?: any }) => {
     const siteTitle = settings?.site_title || "StrongBody AI";
     const siteDescription = settings?.meta_description || settings?.site_tagline || "Natywny dla AI rynek usług zdrowotnych łączący zweryfikowanych profesjonalistów i klientów w Stanach Zjednoczonych i poza nimi.";
-    const contactEmail = settings?.contact_email || "customercare@strongbody.com.pl";
+    const contactEmail = settings?.contact_email || "customercare@strongbody.ai";
     return (
         <footer className="bg-grey-50 text-grey-900 pt-20 pb-10 border-t border-grey-200">
             <Container>
