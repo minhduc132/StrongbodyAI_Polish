@@ -12,21 +12,21 @@ export async function GET(request: Request) {
   let currentPage = 1;
 
   while (true) {
-      const pagePosts = await fetchAllBlogPosts(currentPage, postsPerSitemap);
-      if (!pagePosts || pagePosts.length === 0) break;
-      totalPosts += pagePosts.length;
-      if (pagePosts.length < postsPerSitemap) break;
-      currentPage++;
+    const pagePosts = await fetchAllBlogPosts(currentPage, postsPerSitemap);
+    if (!pagePosts || pagePosts.length === 0) break;
+    totalPosts += pagePosts.length;
+    if (pagePosts.length < postsPerSitemap) break;
+    currentPage++;
   }
 
   const postSitemapCount = Math.max(1, Math.ceil(totalPosts / postsPerSitemap));
 
   const sitemaps = [
-      { loc: `${baseUrl}/sitemap/page-sitemap.xml`, lastmod: lastMod },
-      ...Array.from({ length: postSitemapCount }, (_, i) => ({
-          loc: `${baseUrl}/sitemap/post-sitemap-${i + 1}.xml`,
-          lastmod: lastMod
-      })),
+    { loc: `${baseUrl}/sitemap/page-sitemap.xml/`, lastmod: lastMod },
+    ...Array.from({ length: postSitemapCount }, (_, i) => ({
+      loc: `${baseUrl}/sitemap/post-sitemap-${i + 1}.xml/`,
+      lastmod: lastMod
+    })),
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
