@@ -28,16 +28,15 @@ export async function GET(
     } else if (slug.startsWith("post-sitemap")) {
         const match = slug.match(/post-sitemap-(\d+)\.xml/);
         const page = match ? parseInt(match[1]) : 1;
-        const postsPerSitemap = 1000;
+        const postsPerSitemap = 100; // Mặc định mỗi sitemap 100 bài để an toàn, khớp với index
 
-        const posts = await fetchAllBlogPosts();
+        // Gọi API truyền trang hiện tại, backend sẽ trả về tối đa 100 bài của page đó
+        const posts = await fetchAllBlogPosts(page, postsPerSitemap);
+
         if (posts && Array.isArray(posts)) {
-            const start = (page - 1) * postsPerSitemap;
-            const end = start + postsPerSitemap;
-            const paginatedPosts = posts.slice(start, end);
-
-            routes = paginatedPosts.map((post: any) => ({
-                url: `${baseUrl}/${post.slug}`, // Fixed: removed /blog/
+            // Map kết quả vô sitemap
+            routes = posts.map((post: any) => ({
+                url: `${baseUrl}/${post.slug}`,
                 lastModified: post.date || lastMod,
                 image: post.image,
             }));
