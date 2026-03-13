@@ -37,31 +37,31 @@ const Navbar = ({ settings }: { settings?: any }) => {
         {
             name: "Platforma",
             links: [
-                { name: "Jak to działa", href: "/how-it-works", icon: Info, desc: "Proces i kroki" },
-                { name: "Aplikacja MultiMe AI", href: "/multime", icon: Globe, desc: "Pobierz aplikację" },
+                { name: "Jak to działa", href: "/how-it-works/", icon: Info, desc: "Proces i kroki" },
+                { name: "Aplikacja MultiMe AI", href: "/multime/", icon: Globe, desc: "Pobierz aplikację" },
             ]
         },
         {
             name: "Społeczność",
             links: [
-                { name: "Dla Klientów", href: "/for-clients", icon: User, desc: "Korzyści dla użytkowników" },
-                { name: "Dla Partnerów", href: "/for-partners", icon: Users, desc: "Rozwijaj swoją praktykę" },
-                { name: "Blog", href: "/blog", icon: BookOpen, desc: "Najnowsze aktualizacje" },
+                { name: "Dla Klientów", href: "/for-clients/", icon: User, desc: "Korzyści dla użytkowników" },
+                { name: "Dla Partnerów", href: "/for-partners/", icon: Users, desc: "Rozwijaj swoją praktykę" },
+                { name: "Blog", href: "/blog/", icon: BookOpen, desc: "Najnowsze aktualizacje" },
             ]
         },
         {
             name: "Zasoby",
             links: [
-                { name: "FAQ", href: "/faq", icon: HelpCircle, desc: "Częste pytania" },
-                { name: "Prawo", href: "/legal", icon: Shield, desc: "Zaufanie i zgodność" },
+                { name: "FAQ", href: "/faq/", icon: HelpCircle, desc: "Częste pytania" },
+                { name: "Prawo", href: "/legal/", icon: Shield, desc: "Zaufanie i zgodność" },
             ]
         }
     ];
 
     const simpleLinks = [
         { name: "Strona główna", href: "/" },
-        { name: "O nas", href: "/about" },
-        { name: "Kontakt", href: "/contact" },
+        { name: "O nas", href: "/about/" },
+        { name: "Kontakt", href: "/contact/" },
     ];
 
     const toggleDropdown = (name: string) => {

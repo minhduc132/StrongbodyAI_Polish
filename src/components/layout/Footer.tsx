@@ -5,22 +5,22 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 const platformLinks = [
     { name: "Strona główna", href: "/" },
-    { name: "O nas", href: "/about" },
-    { name: "Jak to działa", href: "/how-it-works" },
+    { name: "O nas", href: "/about/" },
+    { name: "Jak to działa", href: "/how-it-works/" },
 ];
 
 const userLinks = [
-    { name: "Dla Klientów", href: "/for-clients" },
-    { name: "Dla Partnerów", href: "/for-partners" },
-    { name: "FAQ", href: "/faq" },
-    { name: "Kontakt", href: "/contact" },
+    { name: "Dla Klientów", href: "/for-clients/" },
+    { name: "Dla Partnerów", href: "/for-partners/" },
+    { name: "FAQ", href: "/faq/" },
+    { name: "Kontakt", href: "/contact/" },
 ];
 
 const legalLinks = [
-    { name: "Zaufanie i zgodność", href: "/legal" },
-    { name: "Polityka prywatności", href: "/legal" },
-    { name: "Warunki korzystania", href: "/legal" },
-    { name: "Zastrzeżenie dotyczące zgodności", href: "/legal" },
+    { name: "Zaufanie i zgodność", href: "/legal/" },
+    { name: "Polityka prywatności", href: "/legal/" },
+    { name: "Warunki korzystania", href: "/legal/" },
+    { name: "Zastrzeżenie dotyczące zgodności", href: "/legal/" },
 ];
 
 const Footer = ({ settings }: { settings?: any }) => {

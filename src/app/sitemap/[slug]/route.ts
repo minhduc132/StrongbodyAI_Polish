@@ -22,7 +22,7 @@ export async function GET(
             "/blog",
             "/how-it-works"
         ].map((route) => ({
-            url: `${baseUrl}${route}`,
+            url: `${baseUrl}${route}/`,
             lastModified: lastMod,
         }));
     } else if (slug.startsWith("post-sitemap")) {
@@ -36,7 +36,8 @@ export async function GET(
         if (posts && Array.isArray(posts)) {
             // Map kết quả vô sitemap
             routes = posts.map((post: any) => ({
-                url: `${baseUrl}/${post.slug}`,
+                // Thêm / vào đuôi URL cho bài viết
+                url: `${baseUrl}/${post.slug}/`,
                 lastModified: post.date || lastMod,
                 image: post.image,
             }));
