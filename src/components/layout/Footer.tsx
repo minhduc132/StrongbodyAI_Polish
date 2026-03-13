@@ -23,7 +23,10 @@ const legalLinks = [
     { name: "Zastrzeżenie dotyczące zgodności", href: "/legal" },
 ];
 
-const Footer = () => {
+const Footer = ({ settings }: { settings?: any }) => {
+    const siteTitle = settings?.site_title || "StrongBody AI";
+    const siteDescription = settings?.meta_description || settings?.site_tagline || "Natywny dla AI rynek usług zdrowotnych łączący zweryfikowanych profesjonalistów i klientów w Stanach Zjednoczonych i poza nimi.";
+    const contactEmail = settings?.contact_email || "customercare@strongbody.com.pl";
     return (
         <footer className="bg-grey-50 text-grey-900 pt-20 pb-10 border-t border-grey-200">
             <Container>
@@ -31,12 +34,12 @@ const Footer = () => {
                     {/* Brand */}
                     <div className="lg:col-span-2 space-y-5">
                         <p className="text-grey-700 text-sm font-medium leading-relaxed max-w-sm">
-                            Natywny dla AI rynek usług zdrowotnych łączący zweryfikowanych profesjonalistów i klientów w Stanach Zjednoczonych i poza nimi.
+                            {siteDescription}
                         </p>
                         <div className="space-y-2.5 text-sm text-grey-600 font-medium">
                             <div className="flex items-center gap-2">
                                 <Mail size={14} className="text-primary" />
-                                <a href="mailto:customercare@strongbody.ai" className="hover:text-primary transition-colors">customercare@strongbody.ai</a>
+                                <a href={`mailto:${contactEmail}`} className="hover:text-primary transition-colors">{contactEmail}</a>
                             </div>
                             {/* <div className="flex items-center gap-2">
                                 <Phone size={14} className="text-primary" />
@@ -104,7 +107,7 @@ const Footer = () => {
 
                 <div className="pt-8 border-t border-grey-200 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-grey-500 text-xs font-medium text-center md:text-left">
-                        © 2022 StrongBody AI – Zasilane przez MultiMe AI – Globalna platforma z Singapuru. Wszelkie prawa zastrzeżone.
+                        © {new Date().getFullYear()} {siteTitle} – Zasilane przez MultiMe AI – Globalna platforma z Singapuru. Wszelkie prawa zastrzeżone.
                     </p>
                     <p className="text-grey-600 text-[10px] font-medium max-w-md text-center md:text-right">
                         StrongBody AI to technologiczna platforma handlowa. Nie świadczymy bezpośrednio usług medycznych. Wszystkie usługi są świadczone przez niezależnych, zweryfikowanych partnerów.

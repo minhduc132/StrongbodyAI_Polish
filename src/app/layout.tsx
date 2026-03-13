@@ -12,31 +12,38 @@ const jakarta = Plus_Jakarta_Sans({
 
 
 import { generateUnifiedMetadata } from "@/utils/seo";
+import { fetchSiteSettings } from "@/app/api";
 
 export async function generateMetadata(): Promise<Metadata> {
   return generateUnifiedMetadata();
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const settings = await fetchSiteSettings();
+  const siteTitle = settings?.site_title || "StrongBody AI";
+  const siteDescription = settings?.meta_description || settings?.site_tagline || "StrongBody AI";
+  const logoUrl = settings?.logo_url || "https://strongbody.com.pl/images/logo.png";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "StrongBody AI",
-    url: "https://strongbody.ai",
-    logo: "https://strongbody.ai/images/og-image.png",
-    description: "Natywny dla AI rynek usług zdrowotnych łączący zweryfikowanych profesjonalistów i klientów na całym świecie.",
+    name: siteTitle,
+    url: "https://strongbody.com.pl",
+    logo: logoUrl,
+    description: siteDescription,
     sameAs: [
       "https://apps.apple.com/us/app/multime-ai/id6748796219",
       "https://play.google.com/store/apps/details?id=com.multime.app.prod"
     ],
     contactPoint: {
       "@type": "ContactPoint",
-      contactType: "Customer Support",
-      url: "https://strongbody.ai/contact",
+      contactType: "Support",
+      email: settings?.contact_email || "info@strongbody.com.pl",
+      url: "https://strongbody.com.pl/contact",
     },
   };
 
@@ -49,9 +56,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${jakarta.variable} font-sans antialiased text-slate-900 bg-white`}>
-        <Navbar />
+        <Navbar settings={settings} />
         {children}
-        <Footer />
+        <Footer settings={settings} />
       </body>
     </html>
   );

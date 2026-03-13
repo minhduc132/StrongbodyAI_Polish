@@ -7,12 +7,12 @@ export const metadata: Metadata = {
     description: "Uzyskaj odpowiedzi na najczęściej zadawane pytania dotyczące rynku StrongBody AI, płatności, weryfikacji specjalistów i tego, jak zacząć.",
     keywords: ["StrongBody AI FAQ", "pytania o rynek zdrowia", "FAQ płatności escrow", "FAQ zweryfikowani lekarze", "jak korzystać ze StrongBody AI"],
     alternates: {
-        canonical: "https://strongbody.ai/faq",
+        canonical: "https://strongbody.com.pl/faq",
     },
     openGraph: {
         title: "FAQ | Centrum Pomocy StrongBody AI",
         description: "Wszystko, co musisz wiedzieć o korzystaniu ze StrongBody AI — płatności, weryfikacja specjalistów, opieka transgraniczna i rozstrzyganie sporów.",
-        url: "https://strongbody.ai/faq",
+        url: "https://strongbody.com.pl/faq",
         siteName: "StrongBody AI",
         images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "StrongBody AI FAQ" }],
         locale: "pl_PL",

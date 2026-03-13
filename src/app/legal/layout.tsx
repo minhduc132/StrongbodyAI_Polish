@@ -5,12 +5,12 @@ export const metadata: Metadata = {
     description: "Learn how StrongBody AI protects your data, ensures secure payments, and complies with US and international healthcare regulations. We are committed to transparency.",
     keywords: ["StrongBody AI legal", "health platform compliance", "GDPR healthcare", "PCI DSS", "data protection", "medical disclaimer"],
     alternates: {
-        canonical: "https://strongbody.ai/legal",
+        canonical: "https://strongbody.com.pl/legal",
     },
     openGraph: {
         title: "Trust, Legal & Compliance | StrongBody AI",
         description: "Transparency and trust are the foundation of our platform. Learn how we protect users, ensure secure payments, and comply with healthcare regulations.",
-        url: "https://strongbody.ai/legal",
+        url: "https://strongbody.com.pl/legal",
         siteName: "StrongBody AI",
         images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "StrongBody AI Compliance" }],
         locale: "en_US",

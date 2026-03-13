@@ -6,12 +6,12 @@ export const metadata: Metadata = {
     description: "Zgłoś się, aby dołączyć do ekskluzywnej sieci specjalistów zdrowia StrongBody AI w Stanach Zjednoczonych. Zweryfikowani lekarze, specjaliści i eksperci wellness zarabiają globalnie dzięki naszemu rynkowi opartemu na AI.",
     keywords: ["partnerstwo dla specjalistów zdrowia", "dołącz do StrongBody AI", "partnerstwo lekarskie USA", "rekrutacja partnerów telemedycznych", "sieć specjalistów medycznych", "platforma partnerska dla zdrowia"],
     alternates: {
-        canonical: "https://strongbody.ai/for-partners",
+        canonical: "https://strongbody.com.pl/for-partners",
     },
     openGraph: {
         title: "Zostań Partnerem Strategicznym | StrongBody AI",
         description: "Dołącz do naszej selektywnej sieci zweryfikowanych specjalistów zdrowia. Docieraj do klientów premium z całego świata, zarabiaj w USD i zatrzymuj 80% swoich przychodów.",
-        url: "https://strongbody.ai/for-partners",
+        url: "https://strongbody.com.pl/for-partners",
         siteName: "StrongBody AI",
         images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "StrongBody AI Dla Partnerów" }],
         locale: "pl_PL",

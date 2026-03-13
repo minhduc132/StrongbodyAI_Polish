@@ -14,11 +14,11 @@ export async function fetchWidgetItems(code: string) {
     return data;
 }
 
-export async function fetchPostDetail(slug: string, language: string = "en") {
+export async function fetchPostDetail(slug: string, language: string = process.env.NEXT_PUBLIC_LANGUAGE || "en") {
     return apiFetch(`/posts/${slug}?language=${language}`);
 }
 
-export async function fetchPostsByCategory(category: string, page?: number, limit?: number, language: string = "en") {
+export async function fetchPostsByCategory(category: string, page?: number, limit?: number, language: string = process.env.NEXT_PUBLIC_LANGUAGE || "en") {
     let url = `/posts?category=${category}&language=${language}`;
     if (page) url += `&page=${page}`;
     if (limit) url += `&limit=${limit}`;

@@ -6,12 +6,14 @@ import { usePathname } from "next/navigation";
 import Container from "@/components/layout/Container";
 import { Menu, X, ChevronDown, ChevronRight, ArrowRight, Shield, Globe, HelpCircle, User, Users, BookOpen, LayoutGrid, Info } from "lucide-react";
 
-const Navbar = () => {
+const Navbar = ({ settings }: { settings?: any }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
     const pathname = usePathname();
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const logoUrl = settings?.logo_url || "/images/logo.png";
+    const siteTitle = settings?.site_title || "StrongBody AI";
 
     useEffect(() => {
         const handleScroll = () => {
@@ -82,8 +84,8 @@ const Navbar = () => {
                     {/* Logo */}
                     <Link href="/" className="flex-shrink-0 flex items-center gap-2 group">
                         <img
-                            src="/images/logo.png"
-                            alt="StrongBody AI Logo"
+                            src={logoUrl}
+                            alt={`${siteTitle} Logo`}
                             className="h-9 w-auto object-contain"
                         />
                     </Link>

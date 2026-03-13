@@ -20,7 +20,6 @@ export async function GET(
             "/faq",
             "/legal",
             "/blog",
-            "/why-us",
             "/how-it-works"
         ].map((route) => ({
             url: `${baseUrl}${route}`,

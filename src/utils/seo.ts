@@ -14,12 +14,16 @@ export async function generateUnifiedMetadata(
     }
 
     // 1. Base Metadata from Global Settings
-    const baseTitle = settings?.meta_title || settings?.site_title || "StrongBody AI";
+    const siteTitle = settings?.site_title || "StrongBody AI";
+    const baseTitle = settings?.meta_title || siteTitle;
     const baseDesc = settings?.meta_description || settings?.site_tagline || "";
     const baseKeywords = settings?.meta_keywords
         ? settings.meta_keywords.split(",").map((k: string) => k.trim())
         : [];
     const baseOgImage = settings?.og_image || "/images/og-image.png";
+    const baseOgTitle = settings?.og_title || baseTitle;
+    const baseOgDesc = settings?.og_description || baseDesc;
+    const favicon = settings?.favicon_url || "/favicon.ico";
 
     // 2. Page Specific Metadata (if slug exists)
     let pageTitle = fallback?.title;
@@ -30,7 +34,7 @@ export async function generateUnifiedMetadata(
     let publishedTime: string | undefined;
 
     if (slug) {
-        // 1. Try fetching as a blog post
+        // Try fetching as a blog post
         const post = await fetchPostDetail(slug);
         if (post) {
             pageTitle = post.seo_title || post.title || pageTitle;
@@ -48,25 +52,31 @@ export async function generateUnifiedMetadata(
     }
 
     // 3. Construct Final Metadata
-    const finalTitle = pageTitle ? `${pageTitle}` : baseTitle;
+    // For homepage, we might want the absolute title from meta_title
+    const finalTitle = pageTitle ? {
+        absolute: `${pageTitle} | ${siteTitle}`,
+    } : baseTitle;
+
     const finalDesc = pageDesc || baseDesc;
 
     return {
-        metadataBase: new URL("https://strongbody.ai"),
-        title: pageTitle ? {
-            absolute: `${pageTitle} | ${settings?.site_title || "StrongBody AI"}`,
-        } : baseTitle,
+        metadataBase: new URL("https://strongbody.com.pl"),
+        title: finalTitle,
         description: finalDesc,
         keywords: Array.from(new Set(pageKeywords)),
         authors: [{ name: "StrongBody AI Team" }],
+        icons: {
+            icon: favicon,
+            apple: favicon,
+        },
         alternates: {
-            canonical: slug ? `https://strongbody.ai/${slug}` : "https://strongbody.ai",
+            canonical: slug ? `https://strongbody.com.pl/${slug}` : "https://strongbody.com.pl",
         },
         openGraph: {
-            title: pageTitle || baseTitle,
-            description: finalDesc,
-            url: slug ? `https://strongbody.ai/${slug}` : "https://strongbody.ai",
-            siteName: settings?.site_title || "StrongBody AI",
+            title: pageTitle || baseOgTitle,
+            description: pageDesc || baseOgDesc,
+            url: slug ? `https://strongbody.com.pl/${slug}` : "https://strongbody.com.pl",
+            siteName: siteTitle,
             images: [{ url: pageImage, width: 1200, height: 630 }],
             locale: "pl_PL",
             type: isArticle ? "article" : "website",
@@ -74,8 +84,8 @@ export async function generateUnifiedMetadata(
         },
         twitter: {
             card: "summary_large_image",
-            title: pageTitle || baseTitle,
-            description: finalDesc,
+            title: pageTitle || baseOgTitle,
+            description: pageDesc || baseOgDesc,
             images: [pageImage],
         },
         robots: {

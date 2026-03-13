@@ -10,12 +10,12 @@ export const metadata: Metadata = {
     description: "Pobierz aplikację MultiMe AI, aby uzyskać dostęp do globalnych ekspertów zdrowia, tłumaczenia głosowego AI w czasie rzeczywistym, bezpiecznych płatności escrow i spersonalizowanej opieki w Twoim języku.",
     keywords: ["MultiMe AI", "aplikacja zdrowotna", "tłumaczenie głosowe AI", "aplikacja do telekonsultacji", "globalne zdrowie", "aplikacja StrongBody AI", "pobierz aplikację zdrowotną"],
     alternates: {
-        canonical: "https://strongbody.ai/multime",
+        canonical: "https://strongbody.com.pl/multime",
     },
     openGraph: {
         title: "Aplikacja MultiMe AI | Jedna aplikacja, 194 języki, niekończąca się opieka zdrowotna",
         description: "Pobierz MultiMe AI, aby połączyć się ze zweryfikowanymi globalnymi ekspertami zdrowia, tłumaczyć konsultacje w czasie rzeczywistym i otrzymywać opiekę we własnym języku.",
-        url: "https://strongbody.ai/multime",
+        url: "https://strongbody.com.pl/multime",
         siteName: "StrongBody AI",
         images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "Aplikacja MultiMe AI od StrongBody AI" }],
         locale: "pl_PL",
