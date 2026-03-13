@@ -66,7 +66,7 @@ const AboutSection = () => {
                                     "Tłumaczenie głosowe AI sprawia, że klienci międzynarodowi rozumieją Cię idealnie – nawet jeśli mówisz tylko w swoim lokalnym języku.",
                                     "Twórz profesjonalne oferty (cena, pakiet, harmonogram, warunki) bezpośrednio podczas rozmów głosowych.",
                                     "Otrzymuj bezpieczne płatności Escrow – wypłacaj środki na swoje konto w zaledwie 30 minut.",
-                                    "Buduj silną markę osobistą poprzez Voice Hub – Twoją osobistą „stację radiową” automatycznie tłumaczoną na 194 języki.",
+                                    "Buduj silną markę osobistą poprzez Voice Hub – Twoją osobistą „stację radiową” automatycznie tłumaczoną na 40 języki.",
                                     "Zatrzymaj 80% przychodów (tylko 20% opłaty platformowej) od klientów premium z całego świata.",
                                     "Aktywnie docieraj do potencjalnych klientów poprzez Active Message + Voice Hub – sprzedawaj usługi globalnie 24/7 prosto z domu."
                                 ].map((item, idx) => (

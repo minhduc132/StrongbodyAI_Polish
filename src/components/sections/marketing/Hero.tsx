@@ -64,7 +64,7 @@ const Hero = () => {
 
                         <Reveal>
                             <p className="text-base text-grey-600 mb-10 leading-relaxed font-medium">
-                                Tłumaczenie głosowe AI w czasie rzeczywistym (194 języki) <br />
+                                Tłumaczenie głosowe AI w czasie rzeczywistym (40 języki) <br />
                                 • Osobisty Zespół Opieki <br />
                                 • Przejrzyste Oferty <br />
                                 • Bezpieczny Escrow <br />
