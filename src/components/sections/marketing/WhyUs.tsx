@@ -44,7 +44,7 @@ const WhyDifferent = () => {
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
                         Dlaczego StrongBody AI jest wyjątkowe
                     </h2>
-                    <p className="text-base text-white/70 font-medium max-w-2xl mx-auto">
+                    <p className="text-base text-white font-medium max-w-2xl mx-auto">
                         Nie jesteśmy kolejnym katalogiem placówek medycznych. StrongBody AI to kompletna infrastruktura handlowa zaprojektowana dla nowoczesnych usług zdrowotnych.
                     </p>
                 </div>
@@ -61,7 +61,7 @@ const WhyDifferent = () => {
                                     {item.icon}
                                 </div>
                                 <h4 className="text-lg font-bold mb-2 text-white">{item.title}</h4>
-                                <p className="text-sm text-white/60 font-medium leading-relaxed">{item.desc}</p>
+                                <p className="text-sm text-white font-medium leading-relaxed">{item.desc}</p>
                             </div>
                         </Reveal>
                     ))}

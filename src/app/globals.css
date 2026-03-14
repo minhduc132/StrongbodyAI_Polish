@@ -12,9 +12,9 @@
     --secondary-light: #F0F4F8;
 
     /* Text Colors */
-    --text-p: #111827;
-    --text-m: #687588;
-    --text-s: #C6C6C6;
+    --text-p: #000000;
+    --text-m: #000000;
+    --text-s: #000000;
 
     /* Greyscale */
     --grey-50: #FAFAFA;
@@ -70,7 +70,7 @@
     }
 
     body {
-        @apply bg-white text-text-m antialiased;
+        @apply bg-white text-black antialiased;
         line-height: 1.6;
     }
 

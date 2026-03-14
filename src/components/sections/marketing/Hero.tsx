@@ -176,7 +176,7 @@ const Hero = () => {
                                                     <div className="text-lg font-bold text-grey-900 leading-none">Dostępne w 15 Stanach</div>
                                                 </div>
                                             </div>
-                                            <p className="text-[11px] text-grey-500 font-bold leading-relaxed opacity-80 uppercase tracking-wider">
+                                            <p className="text-[11px] text-grey-500 font-bold leading-relaxed uppercase tracking-wider">
                                                 Łączymy ponad 500 zweryfikowanych profesjonalistów w całych USA
                                             </p>
                                         </div>

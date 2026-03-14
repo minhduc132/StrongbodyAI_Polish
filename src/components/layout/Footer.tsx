@@ -33,10 +33,10 @@ const Footer = ({ settings }: { settings?: any }) => {
                 <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
                     {/* Brand */}
                     <div className="lg:col-span-2 space-y-5">
-                        <p className="text-grey-700 text-sm font-medium leading-relaxed max-w-sm">
+                        <p className="text-black text-sm font-medium leading-relaxed max-w-sm">
                             {siteDescription}
                         </p>
-                        <div className="space-y-2.5 text-sm text-grey-600 font-medium">
+                        <div className="space-y-2.5 text-sm text-black font-medium">
                             <div className="flex items-center gap-2">
                                 <Mail size={14} className="text-primary" />
                                 <a href={`mailto:${contactEmail}`} className="hover:text-primary transition-colors">{contactEmail}</a>
@@ -64,7 +64,7 @@ const Footer = ({ settings }: { settings?: any }) => {
 
                     {/* Platform */}
                     <div>
-                        <h4 className="text-xs font-bold tracking-widest uppercase text-grey-700 mb-5">Platforma</h4>
+                        <h4 className="text-xs font-bold tracking-widest uppercase text-black mb-5">Platforma</h4>
                         <ul className="space-y-3">
                             {platformLinks.map((link) => (
                                 <li key={link.name}>
@@ -78,7 +78,7 @@ const Footer = ({ settings }: { settings?: any }) => {
 
                     {/* For You */}
                     <div>
-                        <h4 className="text-xs font-bold tracking-widest uppercase text-grey-700 mb-5">Dla Ciebie</h4>
+                        <h4 className="text-xs font-bold tracking-widest uppercase text-black mb-5">Dla Ciebie</h4>
                         <ul className="space-y-3">
                             {userLinks.map((link) => (
                                 <li key={link.name}>
@@ -92,7 +92,7 @@ const Footer = ({ settings }: { settings?: any }) => {
 
                     {/* Legal */}
                     <div>
-                        <h4 className="text-xs font-bold tracking-widest uppercase text-grey-700 mb-5">Prawo</h4>
+                        <h4 className="text-xs font-bold tracking-widest uppercase text-black mb-5">Prawo</h4>
                         <ul className="space-y-3">
                             {legalLinks.map((link) => (
                                 <li key={link.name}>
@@ -106,10 +106,10 @@ const Footer = ({ settings }: { settings?: any }) => {
                 </div>
 
                 <div className="pt-8 border-t border-grey-200 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-grey-500 text-xs font-medium text-center md:text-left">
+                    <p className="text-black text-xs font-medium text-center md:text-left">
                         © {new Date().getFullYear()} {siteTitle} – Zasilane przez MultiMe AI – Globalna platforma z Singapuru. Wszelkie prawa zastrzeżone.
                     </p>
-                    <p className="text-grey-600 text-[10px] font-medium max-w-md text-center md:text-right">
+                    <p className="text-black text-[10px] font-medium max-w-md text-center md:text-right">
                         StrongBody AI to technologiczna platforma handlowa. Nie świadczymy bezpośrednio usług medycznych. Wszystkie usługi są świadczone przez niezależnych, zweryfikowanych partnerów.
                     </p>
                 </div>

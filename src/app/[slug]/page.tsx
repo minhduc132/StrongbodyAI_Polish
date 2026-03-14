@@ -134,16 +134,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                 className="prose prose-lg prose-grey max-w-none
                                     prose-headings:text-grey-900 prose-headings:font-bold prose-headings:leading-tight
                                     prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg
-                                    prose-p:text-grey-600 prose-p:leading-relaxed prose-p:text-base
+                                    prose-p:text-grey-900 prose-p:leading-relaxed prose-p:text-base
                                     prose-a:text-primary prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
                                     prose-strong:text-grey-900
                                     prose-img:rounded-xl prose-img:shadow-md
-                                    prose-blockquote:border-l-primary prose-blockquote:text-grey-600
-                                    prose-ul:text-grey-600 prose-ol:text-grey-600
+                                    prose-blockquote:border-l-primary prose-blockquote:text-grey-900
+                                    prose-ul:text-grey-900 prose-ol:text-grey-900
                                     prose-li:marker:text-primary
                                     prose-table:text-sm
                                     prose-th:text-grey-900 prose-th:font-bold
-                                    prose-td:text-grey-600"
+                                    prose-td:text-grey-900"
                                 dangerouslySetInnerHTML={{ __html: content }}
                             />
 
@@ -157,8 +157,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                     />
                                     <div>
                                         <h4 className="text-lg font-bold text-grey-900 mb-1">{author}</h4>
-                                        <p className="text-sm text-grey-500 font-medium mb-3">{authorRole}</p>
-                                        <p className="text-sm text-grey-600 font-medium">
+                                        <p className="text-sm text-grey-900 font-medium mb-3">{authorRole}</p>
+                                        <p className="text-sm text-grey-900 font-medium">
                                             {author} jest kluczowym współtwórcą misji StrongBody AI polegającej na udostępnianiu wysokiej jakości opieki zdrowotnej na całym świecie.
                                         </p>
                                     </div>
@@ -235,7 +235,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                             <Headset className="text-white" size={24} />
                                         </div>
                                         <h3 className="text-xl font-bold text-white mb-2">Darmowa konsultacja</h3>
-                                        <p className="text-grey-400 text-sm font-medium leading-relaxed mb-6">
+                                        <p className="text-grey-100 text-sm font-medium leading-relaxed mb-6">
                                             Uzyskaj spersonalizowaną poradę zdrowotną od naszej profesjonalnej sieci medycznej.
                                         </p>
                                         <Link
