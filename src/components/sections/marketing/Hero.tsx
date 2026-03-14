@@ -52,19 +52,19 @@ const Hero = () => {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                             </span>
-                            Dostępne w Stanach Zjednoczonych
+                            Dostępne w 194 Krajach
                         </div>
 
                         <h1 className="text-4xl lg:text-[3.5rem] font-bold !text-grey-900 tracking-tight leading-[1.1] mb-2 text-balance">
-                            StrongBody <span className="text-primary">AI</span> Opieka Medyczna
+                            StrongBody <span className="text-primary">AI</span> Opieka Medyczna (194 Kraje)
                         </h1>
                         <h2 className="text-xl lg:text-2xl font-bold !text-grey-700 mb-6 text-balance">
-                            Zasilane przez MultiMe AI – Mów w swoim języku, dotrzyj do świata
+                            Zasilane przez MultiMe AI – 40+ Języków – Mów po swojemu, dotrzyj do świata
                         </h2>
 
                         <Reveal>
                             <p className="text-base text-grey-600 mb-10 leading-relaxed font-medium">
-                                Tłumaczenie głosowe AI w czasie rzeczywistym (40 języki) <br />
+                                Tłumaczenie głosowe AI w czasie rzeczywistym (40+ języków) <br />
                                 • Osobisty Zespół Opieki <br />
                                 • Przejrzyste Oferty <br />
                                 • Bezpieczny Escrow <br />

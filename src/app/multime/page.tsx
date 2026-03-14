@@ -6,14 +6,14 @@ import { Reveal, FadeIn, ScaleIn } from "@/components/animations/Reveal";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Aplikacja MultiMe AI | Jedna aplikacja, 40 języki, niekończąca się opieka zdrowotna",
+    title: "Aplikacja MultiMe AI | Jedna aplikacja, 40+ języków, 194 kraje",
     description: "Pobierz aplikację MultiMe AI, aby uzyskać dostęp do globalnych ekspertów zdrowia, tłumaczenia głosowego AI w czasie rzeczywistym, bezpiecznych płatności escrow i spersonalizowanej opieki w Twoim języku.",
     keywords: ["MultiMe AI", "aplikacja zdrowotna", "tłumaczenie głosowe AI", "aplikacja do telekonsultacji", "globalne zdrowie", "aplikacja StrongBody AI", "pobierz aplikację zdrowotną"],
     alternates: {
         canonical: "https://strongbody.com.pl/multime",
     },
     openGraph: {
-        title: "Aplikacja MultiMe AI | Jedna aplikacja, 40 języki, niekończąca się opieka zdrowotna",
+        title: "Aplikacja MultiMe AI | Jedna aplikacja, 40+ języków, 194 kraje",
         description: "Pobierz MultiMe AI, aby połączyć się ze zweryfikowanymi globalnymi ekspertami zdrowia, tłumaczyć konsultacje w czasie rzeczywistym i otrzymywać opiekę we własnym języku.",
         url: "https://strongbody.com.pl/multime",
         siteName: "StrongBody AI",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "MultiMe AI | Jedna aplikacja, 40 języki, niekończąca się opieka",
+        title: "MultiMe AI | Jedna aplikacja, 40+ języków, 194 kraje",
         description: "Pobierz aplikację MultiMe AI — czatuj z globalnymi ekspertami zdrowia w swoim języku dzięki tłumaczeniu AI w czasie rzeczywistym.",
         images: ["/images/og-image.png"],
     },
@@ -39,7 +39,7 @@ const MultiMePage = () => {
                         <Reveal>
                             <span className="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Super Aplikacja MultiMe AI</span>
                             <h1 className="text-4xl md:text-6xl font-bold !text-grey-900 mb-6 leading-tight">
-                                Jedna aplikacja. <span className="text-primary">40 języki.</span> Niekończąca się opieka.
+                                Jedna aplikacja. <span className="text-primary">40+ języków. 194 kraje.</span> Niekończąca się opieka.
                             </h1>
                             <p className="text-lg text-grey-600 font-medium mb-10 leading-relaxed max-w-xl">
                                 Pobierz aplikację MultiMe AI, aby odblokować pełną moc StrongBody AI. Czatuj z globalnymi ekspertami, korzystaj z tłumaczenia głosowego w czasie rzeczywistym i zarządzaj swoją podróżą po zdrowie we własnym języku.
